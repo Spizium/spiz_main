@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="tehtava_1">Tehtävä 1.</p>
+<button type="button" onclick="consolePrint();">Print to console</button>
+
+<p id="tehtava_2"> Tehtävä 2. </p>
+<button type="button" onclick="askData()">User greetings!</button>
+<p id="greetings"> Hello...? </p>
+
+<p id="tehtava_3"> Tehtävä 3. </p>
+<button type="button" onclick="calculateAverage()">Number input for the average</button>
+<p id="avg">Average here... Soon!</p>
+
+<p id="tehtava_3"> Tehtävä 5. </p>
+<button type="button" onclick="leapYear()">Is this year a leap year? Find out soon!</button>
+<p id="leapyear_text">Press the button up there to see whenever your year is leaping or not!</p>
+
+<p id="tehtava_3"> Tehtävä 6. </p>
+<button type="button" onclick="calculateSqrtRt()">I have no idea how to otherwise start them events lmao</button>
+<p id="sqrt">Waiting for user input...</p>
+</body>    
+
+<head>
+<script>
+function consolePrint() {
+  console.log("I'm printing to console!");
+}
+function askData() {
+	    const name = prompt('Type your name.');
+		document.getElementById("greetings").innerHTML = `Hello, ${name}!`;
+		 }
+function calculateAverage() {
+		let sum = 0;
+		sum += parseInt(prompt('Enter first number'));
+		sum += parseInt(prompt('Enter second number'));
+		sum += parseInt(prompt('Enter third number'));
+		sum = sum / 3
+		document.getElementById("avg").innerHTML = `The average of three inputted numbers is: ${sum}`;
+	}	
+function calculateSqrtRt() {
+    let userInput;
+    
+    if (confirm('Should I calculate the square root?')) {
+        userInput = prompt('Give da number');
+        
+        // Convert to a number to be safe
+        let num = Number(userInput);
+
+        if (num >= 0) { 
+            document.getElementById("sqrt").innerHTML = Math.sqrt(num);
+        } else if (isNaN(num)) {
+            document.getElementById("sqrt").innerHTML = 'That is not a valid number.';
+        } else {
+            document.getElementById("sqrt").innerHTML = 'The square root of a negative number is not defined';
+        } // Added closing brace for the inner else
+        
+    } else {
+        document.getElementById("sqrt").innerHTML = 'The square root is not calculated.';
+    } // closing brace for the outer else
+} // closing brace for the function
+function leapYear() {
+	const year = prompt('Type your name.');
+    if (
+        year % 100 === 0 ? year % 400 === 0 : year % 4 === 0
+    )
+        document.getElementById("leapyear_text").innerHTML = `Year ${year} is a leap year!`;
+    else
+		document.getElementById("leapyear_text").innerHTML = `Year ${year} is not a leap year!`;
+}
+</script>
+</head>
+
+</html>
