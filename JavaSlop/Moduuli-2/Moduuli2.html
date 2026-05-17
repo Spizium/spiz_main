@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<script>	
+function arrayReverse() {
+	let reverse = a => [...a].map(a.pop, a);
+	const list = [];
+	for (let step = 0; step < 5; step++) //Tässä teidän for-lause :P
+		list.push(prompt("gib number"));
+	console.log(`The list in input order:, ${list}`);
+	let listr = reverse(list)
+	console.log(`The list in reverse order:, ${listr}`);
+	document.getElementById("a1-bx").innerHTML = "Array was printed to console!";
+}
+function participants() {
+	const list = [];
+	const n_pp = prompt("How many people are coming? (eg. 67)")
+	for (let step = 0; step < n_pp; step++)
+		list.push(prompt("Give the name of a participant"));
+	list.sort()
+	const outputElement = document.getElementById("a2-tx");
+		outputElement.innerHTML = ""
+	let htmlContent = "";
+	for (let i = 0; i < list.length; i++)
+       htmlContent += `<h1>${list[i]}</h1>`; 
+	outputElement.innerHTML = htmlContent;
+}
+function doGGo() {
+	const list = [];
+	for (let step = 0; step < 6; step++)
+		list.push(prompt("Give the name of the dog"));
+	list.sort()
+	list.reverse()
+	const outputElement = document.getElementById("a3-tx");
+		outputElement.innerHTML = ""
+	let htmlContent = "";
+	for (let i = 0; i < list.length; i++)
+       htmlContent += `<h1>${list[i]}</h1>`; 
+	outputElement.innerHTML = htmlContent;
+	
+}
+function nmbrQuery () {
+	const list =  []
+	while (true) {
+    	const input = prompt("Enter a number (0 to stop):");
+		if (input == 0) {break}
+		else {list.push(input)}
+		
+		}
+	list.sort(function(a, b){return b-a})
+	console.log(list)
+	document.getElementById("a4-bx").innerHTML = "Array was printed to console!";
+}
+function rollDice(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+function rollMain() {
+    const listElement = document.getElementById('a4-tx');
+	
+    let result = 0;
+    
+    while (true) {
+        result = rollDice(1, 6);
+        
+        if (result == 6) {
+			const endItem = document.createElement('li');
+            endItem.textContent = `--- Rolled 6; stopping ---`;
+            listElement.appendChild(endItem);
+            break; 
+        } 
+        
+        const listItem = document.getElementById('li');
+        const newListItem = document.createElement('li');
+        newListItem.textContent = `You rolled a: ${result}`;
+        listElement.appendChild(newListItem);
+    }
+}
+</script>
+<style>
+
+:root {
+  --main-bg-color: teal;
+  --main-ol-color: #FD8B51;
+  --main-bt-color: #4B9DA9;
+  --main-tx-color: rgb(0 0 0 / 65%);
+  --main-tx-alpha: 0.8;
+  --main-tx-grams: bold;
+  --main-tx-font: sans-serif;
+}
+.text-style-main {
+	font-family: sans-serif; 
+	line-height: 1.6; 
+	color: var(--main-tx-color); 
+	word-wrap: break-word;
+	font-size: 25px;
+	font-weight: var(--main-tx-grams);
+}
+.box-style-main {
+	font-family: sans-serif; 
+	line-height: 1.6; 
+	color: var(--main-tx-color);
+	font-weight: var(--main-tx-grams);
+	word-wrap: break-word;
+	background: var(--main-bt-color);
+	font-size: 17px;
+	border: 3px solid var(--main-ol-color);
+	border-radius: 25px;
+}
+.background-style-main {
+	background-color: var(--main-bg-color);
+}
+.list-style-main {
+	font-family: var(--main-tx-font);
+	color: var(--main-tx-color);
+	font-weight: var(--main-tx-grams);
+	font-size: 10px;
+}
+</style>
+</head>
+
+<body class="background-style-main">
+<a id="slop" class="text-style-main" > TEHTÄVÄ 1</a>
+<div>
+<button id="a1-bx" type="button" onclick="arrayReverse()" class="box-style-main"> Activate loop </button>
+</div>
+<a class="text-style-main" > TEHTÄVÄ 2</a>
+<div>
+<button id="a2-bx" type="button" onclick="participants()" class="box-style-main"> Activate code </button>
+	<div>
+	<ol id="a2-tx" class="list-style-main"> </ol>
+	</div>
+</div>
+<a class="text-style-main" > TEHTÄVÄ 3</a>
+<div>
+	<button id="a3-bx" type="button" onclick="doGGo()" class="box-style-main"> Activate SlopScript™ </button>
+	<ul id="a3-tx" class="list-style-main"> </ul>
+</div>
+<a  class="text-style-main" > TEHTÄVÄ 4</a>
+<div>
+	<button id="a4-bx" type="button" onclick="nmbrQuery()" class="box-style-main"> Activate SlopScript™ </button>
+</div>
+<a  class="text-style-main" > TEHTÄVÄ 6</a>
+<div>
+	<button id=":3" type="button" onclick="rollMain()" class="box-style-main"> Activate SlopScript™ </button>
+	<ul id="a4-tx" class="list-style-main"> </ul>
+</div>
+</body>
